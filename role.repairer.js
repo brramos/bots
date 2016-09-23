@@ -11,11 +11,11 @@ var roleRepairer = {
 		}
 
 		if (creep.memory.repairing) {
-			var closestDamagedStructure = creep.pos.findClosestByPath(FIND_STRUCTURES, {
-				filter: (structure) => structure.hits < structure.hitsMax && structure.structureType !== STRUCTURE_WALL
+			var tower = creep.pos.findClosestByPath(FIND_MY_STRUCTURES, {
+				filter: (structure) => (structure.structureType === STRUCTURE_TOWER)
 			});
-			if (closestDamagedStructure != undefined && creep.repair(closestDamagedStructure) === ERR_NOT_IN_RANGE) {
-				creep.moveTo(closestDamagedStructure);
+			if (tower != undefined && creep.transfer(tower, RESOURCE_ENERGY) === ERR_NOT_IN_RANGE) {
+				creep.moveTo(tower);
 			} else {
 				var closest_source = creep.pos.findClosestByPath(FIND_SOURCES);
 				if (creep.harvest(closest_source) === ERR_NOT_IN_RANGE) {
