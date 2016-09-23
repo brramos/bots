@@ -16,7 +16,7 @@ function logCreateCreepForRoleResponse(role) {
 function createCreepForRole(role) {
 	let creeps = _.sum(Game.creeps, (creep) => creep.memory.role === role);
 
-	if (600 < Game.spawns.Alpha.room.energyAvailable) {
+	if (799 < Game.spawns.Alpha.room.energyAvailable) {
 		if (role === 'harvester' && creeps < 10) {
 			logCreateCreepForRoleResponse(role);
 		}
