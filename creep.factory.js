@@ -9,65 +9,37 @@ function removeCreepsFromMemory() {
 	}
 }
 
-function logCreateCreepForRoleResponse(role, creepCount, memory) {
-	var energy = Game.spawns.Alpha.room.energyAvailable;
-	console.log('role: ' + role + ' | ' + creepCount + ' creeps | response: ' + Game.spawns.Alpha.createCustomCreep(energy, memory));
+function logCreateCreepForRoleResponse(role) {
+	console.log(role + ' | ' + Game.spawns.Alpha.createCustomCreep(Game.spawns.Alpha.room.energyAvailable, {role: role, working: false}));
 }
 
 function createCreepForRole(role) {
-	var creeps = GetCountOfCreepsForRole(role);
+	let creeps = _.sum(Game.creeps, (creep) => creep.memory.role === role);
 
-	if (role === 'harvester' && creeps < 10) {
-		logCreateCreepForRoleResponse(role, creeps, {
-			role: role,
-			working: false
-		});
-	}
-	if (role === 'upgrader') {
-		if (creeps < 4) {
-			logCreateCreepForRoleResponse(role, creeps, {
-				role: role,
-				working: false
-			});
+	if (600 < Game.spawns.Alpha.room.energyAvailable) {
+		if (role === 'harvester' && creeps < 10) {
+			logCreateCreepForRoleResponse(role);
 		}
-	}
-	if (role === 'builder') {
-		if (creeps < 4) {
-			logCreateCreepForRoleResponse(role, creeps, {
-				role: role,
-				working: false,
-				isConstructionSite: true
-			});
+		if (role === 'upgrader' && creeps < 2) {
+			logCreateCreepForRoleResponse(role);
 		}
-	}
-	if (role === 'repairer') {
-		if (creeps < 4) {
-			logCreateCreepForRoleResponse(role, creeps, {
-				role: role,
-				working: false,
-				isDamagedStructure: true
-			});
+		if (role === 'builder' && creeps < 2) {
+			logCreateCreepForRoleResponse(role);
+		}
+
+		if (role === 'repairer' && creeps < 2) {
+			logCreateCreepForRoleResponse(role);
 		}
 	}
 }
 
-function GetCountOfCreepsForRole(role) {
-	return _.sum(Game.creeps, (creep) => creep.memory.role === role);
-}
-
-var creepFactory = {
+module.exports = {
 	create: function () {
 		removeCreepsFromMemory();
 
 		createCreepForRole('harvester');
-
 		createCreepForRole('repairer');
-
 		createCreepForRole('upgrader');
-
 		createCreepForRole('builder');
-
 	}
 };
-
-module.exports = creepFactory;
