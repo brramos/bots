@@ -66,7 +66,7 @@ var creepFactory = {
 
 		createCreepForRole('harvester');
 
-		createCreepForRole('repairer');
+		//createCreepForRole('repairer');
 
 		createCreepForRole('upgrader');
 
