@@ -18,14 +18,14 @@ function createCreepForRole(role) {
 	var creeps = GetCountOfCreepsForRole(role);
 	var energy = Game.spawns.Alpha.room.energyAvailable;
 
-	if (role === 'harvester' && creeps < 10) {// && 799 < energy) {
+	if (role === 'harvester' && creeps < 10) {
 		logCreateCreepForRoleResponse(role, creeps, {
 			role: role,
 			working: false
 		});
 	}
 	if (role === 'upgrader') {
-		if (creeps < 4 && 499 < energy) {
+		if (creeps < 4) {
 			logCreateCreepForRoleResponse(role, creeps, {
 				role: role,
 				working: false
@@ -33,7 +33,7 @@ function createCreepForRole(role) {
 		}
 	}
 	if (role === 'builder') {
-		if (creeps < 4 && 499 < energy) {
+		if (creeps < 4) {
 			logCreateCreepForRoleResponse(role, creeps, {
 				role: role,
 				working: false,
@@ -42,7 +42,7 @@ function createCreepForRole(role) {
 		}
 	}
 	if (role === 'repairer') {
-		if (creeps < 4 && 499 < energy) {
+		if (creeps < 4) {
 			logCreateCreepForRoleResponse(role, creeps, {
 				role: role,
 				working: false,
@@ -66,11 +66,11 @@ var creepFactory = {
 
 		createCreepForRole('harvester');
 
-		//createCreepForRole('repairer');
+		createCreepForRole('repairer');
 
 		createCreepForRole('upgrader');
 
-		//createCreepForRole('builder');
+		createCreepForRole('builder');
 
 	}
 };
