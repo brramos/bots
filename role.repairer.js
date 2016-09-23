@@ -17,7 +17,16 @@ var roleRepairer = {
 			if (closestDamagedStructure != undefined && creep.repair(closestDamagedStructure) === ERR_NOT_IN_RANGE) {
 				creep.moveTo(closestDamagedStructure);
 			} else {
-				creep.memory.isDamagedStructure = false;
+				var closest_source = creep.pos.findClosestByPath(FIND_SOURCES);
+				if (creep.harvest(closest_source) === ERR_NOT_IN_RANGE) {
+					creep.moveTo(closest_source);
+				}
+				var closestStructure = creep.pos.findClosestByPath(FIND_MY_STRUCTURES, {
+					filter: (structure) => (structure.structureType === STRUCTURE_SPAWN || structure.structureType === STRUCTURE_EXTENSION || structure.structureType === STRUCTURE_TOWER || structure.structureType === STRUCTURE_CONTAINER) && structure.energy < structure.energyCapacity
+				});
+				if (closestStructure != undefined && creep.transfer(closestStructure, RESOURCE_ENERGY) === ERR_NOT_IN_RANGE) {
+					creep.moveTo(closestStructure);
+				}
 			}
 		}
 		else {
