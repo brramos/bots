@@ -16,7 +16,6 @@ function logCreateCreepForRoleResponse(role, creepCount, memory) {
 
 function createCreepForRole(role) {
 	var creeps = GetCountOfCreepsForRole(role);
-	var energy = Game.spawns.Alpha.room.energyAvailable;
 
 	if (role === 'harvester' && creeps < 10) {
 		logCreateCreepForRoleResponse(role, creeps, {
@@ -52,10 +51,6 @@ function createCreepForRole(role) {
 	}
 }
 
-function GetCreepsForRole(role) {
-	return _.filter(Game.creeps, (creep) => creep.memory.role === role);
-}
-
 function GetCountOfCreepsForRole(role) {
 	return _.sum(Game.creeps, (creep) => creep.memory.role === role);
 }
@@ -66,7 +61,7 @@ var creepFactory = {
 
 		createCreepForRole('harvester');
 
-		//createCreepForRole('repairer');
+		createCreepForRole('repairer');
 
 		createCreepForRole('upgrader');
 
