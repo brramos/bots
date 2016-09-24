@@ -20,7 +20,7 @@ function createCreepForRole(role) {
 		if (role === 'harvester' && creeps < 10) {
 			logCreateCreepForRoleResponse(role);
 		}
-		if (role === 'upgrader' && creeps < 2) {
+		if (role === 'upgrader' && creeps < 5) {
 			logCreateCreepForRoleResponse(role);
 		}
 		if (role === 'builder' && creeps < 2) {
