@@ -9,16 +9,12 @@ module.exports = {
 			let creep = Game.creeps[name];
 
 			if (creep.memory.role == 'harvester') {
-				creep.say('H');
 				roleHarvester.run(creep);
 			} else if (creep.memory.role == 'upgrader') {
-				creep.say('U');
 				roleUpgrader.run(creep);
 			} else if (creep.memory.role == 'builder') {
-				creep.say('B');
 				roleBuilder.run(creep);
 			} else if (creep.memory.role == 'repairer') {
-				creep.say('R');
 				roleRepairer.run(creep);
 			}
 		}
