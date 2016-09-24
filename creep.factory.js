@@ -17,29 +17,25 @@ function createCreepForRole(role) {
 	let creeps = _.sum(Game.creeps, (creep) => creep.memory.role === role);
 
 	if (799 < Game.spawns.Alpha.room.energyAvailable) {
-		if (role === 'harvester' && creeps < 10) {
-			logCreateCreepForRoleResponse(role);
-		}
 		if (role === 'upgrader' && creeps < 5) {
 			logCreateCreepForRoleResponse(role);
 		}
 		if (role === 'builder' && creeps < 2) {
 			logCreateCreepForRoleResponse(role);
 		}
-
 		if (role === 'repairer' && creeps < 2) {
 			logCreateCreepForRoleResponse(role);
 		}
 	}
 }
 
-module.exports = {
-	create: function () {
-		removeCreepsFromMemory();
+function create() {
+	removeCreepsFromMemory();
+	createCreepForRole('upgrader');
+	createCreepForRole('repairer');
+	createCreepForRole('builder');
+}
 
-		createCreepForRole('harvester');
-		createCreepForRole('repairer');
-		createCreepForRole('upgrader');
-		createCreepForRole('builder');
-	}
+module.exports = {
+	create: create
 };

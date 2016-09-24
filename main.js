@@ -1,5 +1,5 @@
-var creepFactory = require('creep.factory');
-var roleManager = require('role.manager');
+let creepFactory = require('creep.factory');
+let roleManager = require('role.manager');
 
 module.exports.loop = function () {
 

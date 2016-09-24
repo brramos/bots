@@ -1,8 +1,8 @@
 module.exports = function () {
 	StructureSpawn.prototype.createCustomCreep = function (energy, options) {
-		var cost = 200;
-		var numberOfParts = Math.floor(energy / cost);
-		var body = [];
+		let cost = 200;
+		let numberOfParts = Math.floor(energy / cost);
+		let body = [];
 
 		for (let i = 0; i < numberOfParts; i++) {
 			body.push(WORK);
