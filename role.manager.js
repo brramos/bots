@@ -2,9 +2,12 @@ var roleHarvester = require('role.harvester');
 var roleUpgrader = require('role.upgrader');
 var roleBuilder = require('role.builder');
 var roleRepairer = require('role.repairer');
+var roleTower = require('role.tower');
 
 module.exports = {
 	run: function () {
+		roleTower.run('57e2836befd0648323e9dd95');
+
 		for (let name in Game.creeps) {
 			let creep = Game.creeps[name];
 
