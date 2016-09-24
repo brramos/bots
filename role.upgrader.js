@@ -15,7 +15,7 @@ var roleUpgrader = {
 			var source = creep.pos.findClosestByPath(FIND_MY_STRUCTURES, {
 				filter: (structure) => (structure.structureType === STRUCTURE_CONTAINER) && structure.energy < structure.energyCapacity
 			});
-			if (creep.harvest(source) === ERR_NOT_IN_RANGE) {
+			if (creep.transfer(source) === ERR_NOT_IN_RANGE) {
 				creep.moveTo(source);
 			}
 		}
