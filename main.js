@@ -2,7 +2,7 @@ var creepFactory = require('creep.factory');
 var roleManager = require('role.manager');
 
 module.exports.loop = function () {
-	var tower = Game.getObjectById('57e2836befd0648323e9dd95');
+	let tower = Game.getObjectById('57e2836befd0648323e9dd95');
 	if(tower) {
 		var closestDamagedStructure = tower.pos.findClosestByRange(FIND_STRUCTURES, {
 			filter: (structure) => structure.hits < structure.hitsMax

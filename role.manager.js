@@ -6,26 +6,20 @@ var roleRepairer = require('role.repairer');
 module.exports = {
 	run: function () {
 		for (let name in Game.creeps) {
-			var creep = Game.creeps[name];
+			let creep = Game.creeps[name];
 
 			if (creep.memory.role == 'harvester') {
+				creep.say('H');
 				roleHarvester.run(creep);
 			} else if (creep.memory.role == 'upgrader') {
+				creep.say('U');
 				roleUpgrader.run(creep);
 			} else if (creep.memory.role == 'builder') {
-				if (creep.memory.isConstructionSite) {
-					roleBuilder.run(creep);
-				}
-				else {
-					roleUpgrader.run(creep);
-				}
+				creep.say('B');
+				roleBuilder.run(creep);
 			} else if (creep.memory.role == 'repairer') {
-				if (creep.memory.isDamagedStructure) {
-					roleRepairer.run(creep);
-				} else {
-					creep.memory.isConstructionSite = true;
-					roleBuilder.run(creep);
-				}
+				creep.say('R');
+				roleRepairer.run(creep);
 			}
 		}
 	}
