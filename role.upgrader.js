@@ -12,7 +12,9 @@ var roleUpgrader = {
 			creep.moveTo(creep.room.controller);
 		}
 		else {
-			var source = creep.pos.findClosestByPath(FIND_SOURCES);
+			var source = creep.pos.findClosestByPath(FIND_MY_STRUCTURES, {
+				filter: (structure) => (structure.structureType === STRUCTURE_CONTAINER) && structure.energy < structure.energyCapacity
+			});
 			if (creep.harvest(source) === ERR_NOT_IN_RANGE) {
 				creep.moveTo(source);
 			}
