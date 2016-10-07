@@ -5,6 +5,7 @@ let roleTower = require('role.tower');
 
 function run() {
 	roleTower.run('57e2836befd0648323e9dd95');
+	roleTower.run('57f61d89f12c59c91ad8c090');
 
 	for (let name in Game.creeps) {
 		let creep = Game.creeps[name];
